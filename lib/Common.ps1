@@ -785,7 +785,7 @@ function Hide-WdSecret {
     $t = $Text
     # Mask complete quoted values first: stopping at whitespace would leave most of a passphrase visible.
     $secretName = '(?:(?:password|passwd|passphrase|pwd|secret|token|client[-_]?secret|authorization|auth[-_]?token|bearer|credentials?|session[-_]?id|signature)[\w-]{0,16}|[\w-]*key)'
-    $quotedValue = '(?<quote>["''])(?:\\.|(?!\k<quote>)[\s\S])*?\k<quote>'
+    $quotedValue = '(?<quote>["''])(?:\\[\s\S]|(?!\k<quote>)[^\\])*?\k<quote>'
     $t = [regex]::Replace($t, ('(?i)\b(?<prefix>' + $secretName + '\s*["'']?\s*[=:]\s*)' + $quotedValue), '${prefix}${quote}***${quote}')
     $switchName = '(?:password|passwd|passphrase|pwd|pass|token|secret|api[-_]?key|access[-_]?key|private[-_]?key|client[-_]?secret|credentials?)'
     $t = [regex]::Replace($t, ('(?i)(?<prefix>(?:^|\s)[-/]{1,2}' + $switchName + '(?:\s+|[=:]))' + $quotedValue), '${prefix}${quote}***${quote}')

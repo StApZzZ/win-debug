@@ -567,6 +567,7 @@ if ($commonLoaded) {
         @("tool.exe --token 'two words' --port 5", "tool.exe --token '***' --port 5"),
         @('{"password": "long secret phrase"}', '{"password": "***"}'),
         @('{"token": "one\"two words"}', '{"token": "***"}'),
+        @(('password="' + ('\' * 128)), 'password="***'),
         @('{"token": "abc.def"}', '{"token": "***"}'),
         @('xmrig -o pool:4444 -u 48abc', 'xmrig -o pool:4444 -u 48abc'))) {
         $got = Hide-WdSecret -Text $pair[0]
