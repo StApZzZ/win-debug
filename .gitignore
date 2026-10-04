@@ -1,0 +1,26 @@
+# Generated reports (contain personal data: hostnames, usernames, serials, IPs)
+reports/*
+!reports/.gitkeep
+
+# Editor / OS noise
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# Local scratch
+*.log
+*.tmp
+
+# Monitor control/marker files and archives
+STOP
+*.running
+*.zip
+
+# Test output
+tests/output/
+
+# Claude Code harness state
+.claude/

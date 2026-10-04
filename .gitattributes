@@ -1,0 +1,27 @@
+# Normalize line endings in the repository
+* text=auto
+
+# Windows scripts must be CRLF (cmd.exe misparses labels/multi-line blocks with LF)
+*.cmd  text eol=crlf
+*.bat  text eol=crlf
+*.ps1  text eol=crlf
+*.psm1 text eol=crlf
+*.psd1 text eol=crlf
+
+# Docs keep LF
+*.md   text eol=lf
+*.json text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+
+# Binaries
+*.png  binary
+*.jpg  binary
+*.gif  binary
+*.ico  binary
+
+# Inline C# sources compiled by Add-Type
+*.cs   text eol=crlf
+
+# GitHub language statistics
+*.ps1  linguist-language=PowerShell

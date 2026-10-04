@@ -1,0 +1,22 @@
+name: Windows checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostics:
+    runs-on: windows-2022
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - uses: actions/checkout@v4
+      - name: Repository self-check (Windows PowerShell 5.1)
+        run: .\tests\Invoke-Checks.ps1
+      - name: Functional checks and monitor lifecycle
+        run: .\tests\Invoke-FunctionalChecks.ps1 -IncludeMonitor
